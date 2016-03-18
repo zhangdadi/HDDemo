@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 HD. All rights reserved.
 //
 
-#import <HDServices/HDServices.h>
+#import <HDServices/BaseJSONParam.h>
 
-@interface BaseJSONPageParam : JSONModel
+@interface BaseJSONPageParam : BaseJSONParam
 
 @property (nonatomic, assign) NSInteger pageIndex; //默认为1
 

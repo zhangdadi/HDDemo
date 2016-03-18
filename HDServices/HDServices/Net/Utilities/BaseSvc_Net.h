@@ -7,6 +7,7 @@
 //
 
 #import "BaseSvc.h"
+#import "DBHelper.h"
 
 
 #ifndef HDServices_BaseSvc_Net_h
@@ -15,7 +16,7 @@
 
 @interface BaseSvc ()
 
-
+@property (nonatomic, strong) DBHelper *help;
 
 @end
 

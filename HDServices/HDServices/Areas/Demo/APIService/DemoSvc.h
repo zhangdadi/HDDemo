@@ -7,16 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <HDServices/APIResult.h>
 #import <HDServices/HDServices.h>
 
+@interface DemoSvc : BaseSvc
 
-@interface DemoSvc : NSObject
-
-//+ (void)getDemoWithCompleted:(void (^)(APIResult *result, DemoModel *model))completed;
-
-//+ (void)postDemo:(DemoModel *)mo;
-
-+ (instancetype)getDateWithCOmpleted:(void(^)(APIResult *result, NSString *model))completed;
++ (instancetype)getDateWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed;
 
 @end

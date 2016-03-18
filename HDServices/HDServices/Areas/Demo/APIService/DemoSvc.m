@@ -9,19 +9,21 @@
 #import "DemoSvc.h"
 #import "DBHelper.h"
 #import "APIResult_Net.h"
+#import "BaseSvc_Net.h"
 
 
 @implementation DemoSvc
 
-+ (instancetype)getDateWithCOmpleted:(void(^)(APIResult *result, NSString *model))completed {
++ (instancetype)getDateWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed {
     
-    [DBHelper getUrl:@"api/city/GetEnableCities"].refresh(NO).completionBlock(^(APIResult *result){
-        NSLog(@"11");
+    DemoSvc *svc = [[DemoSvc alloc] init];
+    
+    (svc.help = [DBHelper getUrl:@"api/nodes/show.json"]).param(param).refresh(YES).completionBlock(^(APIResult *result){
         DemoModel *model = [DemoModel parse:result.data];
-        completed(result, nil);
+        completed(result, model);
     }).start();
-    
-    return nil;
+
+    return svc;
 }
 
 @end

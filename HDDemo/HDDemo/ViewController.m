@@ -10,6 +10,9 @@
 #import <HDCore/HDCore.h>
 #import <HDServices/HDServices.h>
 
+@interface ViewController ()
+@property (nonatomic, strong) DemoSvc *svc;
+@end
 
 @implementation ViewController
 
@@ -17,11 +20,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [DemoSvc getDateWithCOmpleted:^(APIResult *result, NSString *date) {
-        
+    
+    DemoParam *param = [[DemoParam alloc] init];
+    param.ID = 2;
+    self.svc = [DemoSvc getDateWithParam:param cmpleted:^(APIResult *result, DemoModel *model) {
+        NSLog(@"%@", model);
     }];
     
-    HDDemoModel *a = [[HDDemoModel alloc] init];
+}
+- (IBAction)buttonClick:(id)sender {
+    [_svc loadNextPage];
+
 }
 
 - (void)didReceiveMemoryWarning {

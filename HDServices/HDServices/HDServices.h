@@ -18,10 +18,10 @@ FOUNDATION_EXPORT const unsigned char HDServicesVersionString[];
 
 #import <HDServices/APIResult.h>
 
-#import <HDServices/BaseJSONModel.h>
-#import <HDServices/HDDemoModel.h>
+#import <HDServices/DemoParam.h>
 #import <HDServices/DemoModel.h>
 
 #import <HDServices/UIKit+AFNetworking.h>
+#import <HDServices/BaseSvc.h>
 #import <HDServices/DemoSvc.h>
 

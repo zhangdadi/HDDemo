@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 HD. All rights reserved.
 //
 
-#import <HDServices/HDServices.h>
+#import <HDServices/BaseJSONModel.h>
 
 
 @interface DemoModelItem : BaseJSONModel
@@ -23,6 +23,9 @@
 
 
 @interface DemoModel : BaseJSONModel
-@property (nonatomic, strong) NSArray<DemoModelItem> *Data;
+@property (nonatomic, assign) NSNumber *ID;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *title;
 @end
 

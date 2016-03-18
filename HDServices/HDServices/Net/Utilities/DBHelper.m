@@ -12,7 +12,7 @@
 
 @interface DBHelper ()
 {
-    NSDictionary *_params;
+    BaseJSONParam *_param;
     NSString *_apiVersion;
     BOOL _refresh;
     DBHelperCompletionBlock _completionBlock;
@@ -44,9 +44,9 @@
     return helper;
 }
 
-- (DBHelper<DBHelperAttribute> *(^)(NSDictionary*))params {
-    return ^id(NSDictionary *params) {
-        _params = params;
+- (DBHelper<DBHelperAttribute> *(^)(BaseJSONParam*))param {
+    return ^id(BaseJSONParam *param) {
+        _param = param;
         return self;
     };
 }
@@ -74,7 +74,7 @@
 
 - (id (^)())start {
     return ^id() {
-        [DBHelper getData:_url isRefresh:_refresh apiVersion:_apiVersion params:_params completed:_completionBlock];
+        [DBHelper getData:_url isRefresh:_refresh apiVersion:_apiVersion params:[_param toDictionary] completed:_completionBlock];
         return nil;
     };
 }
@@ -116,7 +116,7 @@
 #pragma mark - 私有方法
 
 + (NSURL *)getBaseURL {
-    return [NSURL URLWithString:@"http://apitest.aidianhui.com"];
+    return [NSURL URLWithString:@"http://www.v2ex.com/"];
 }
 
 + (NSDictionary *)getHttpHeadDicta {
@@ -126,6 +126,10 @@
 
 }
 
+#pragma mark -
 
+- (BaseJSONParam *)getParam {
+    return _param;
+}
 
 @end

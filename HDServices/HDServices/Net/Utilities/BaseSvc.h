@@ -10,9 +10,11 @@
 
 @interface BaseSvc : NSObject
 
+//加载首页
+- (void)loadFirstPage;
+
 //加载下一页
 - (void)loadNextPage;
-- (void)loadFirstPage;
 
 
 @end
