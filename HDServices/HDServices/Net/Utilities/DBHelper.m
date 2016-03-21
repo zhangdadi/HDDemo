@@ -10,6 +10,18 @@
 #import "AFNetworking.h"
 #import "APIResult_Net.h"
 
+
+#define KGET  0
+#define KPOST 1
+
+
+//请求类型
+typedef NS_ENUM(int, HttpType) {
+    HttpTypeGet = 0,
+    HttpTypePost
+};
+
+
 @interface DBHelper ()
 {
     BaseJSONParam *_param;
@@ -19,6 +31,8 @@
 }
 
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, assign) HttpType httpType;
+
 
 @end
 
@@ -35,12 +49,14 @@
 + (instancetype)getUrl:(NSString *)url {
     DBHelper *helper = [[DBHelper alloc] init];
     helper.url = url;
+    helper.httpType = HttpTypeGet;
     return helper;
 }
 
 + (instancetype)postUrl:(NSString *)url {
     DBHelper *helper = [[DBHelper alloc] init];
     helper.url = url;
+    helper.httpType = HttpTypePost;
     return helper;
 }
 
@@ -74,7 +90,17 @@
 
 - (id (^)())start {
     return ^id() {
-        [DBHelper getData:_url isRefresh:_refresh apiVersion:_apiVersion params:[_param toDictionary] completed:_completionBlock];
+        switch (_httpType) {
+            case HttpTypeGet:
+                [DBHelper getData:_url isRefresh:_refresh apiVersion:_apiVersion params:[_param toDictionary] completed:_completionBlock];
+                break;
+            case HttpTypePost:
+                [DBHelper postData:_url apiVersion:_apiVersion params:[_param toDictionary] completed:_completionBlock];
+                break;
+                
+            default:
+                break;
+        }
         return nil;
     };
 }
@@ -86,7 +112,6 @@
       completed:(void (^)(APIResult *result))completed {
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[self getBaseURL]];
-//    [self setHttpFildWithManager:manager];
 
     [manager GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         APIResult *result = [[APIResult alloc] init];
@@ -101,16 +126,24 @@
     
 }
 
-
-+ (void)postData:(NSString *)url params:(NSDictionary *)params completed:(void (^)(APIResult *))completed {
-    AFHTTPSessionManager *ma = [AFHTTPSessionManager manager];
-    ma.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];//设置相应内容类型
-
-    [ma POST:url parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@", responseObject);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@", error);
++ (void)postData:(NSString *)url
+     apiVersion:(NSString*)apiVersion
+         params:(NSDictionary*) params
+      completed:(void (^)(APIResult *result))completed {
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[self getBaseURL]];
+    
+    [manager POST:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        APIResult *result = [[APIResult alloc] init];
+        result.data = responseObject;
+        if (completed) {
+            completed(result);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"请求不通");
     }];
+    
 }
 
 #pragma mark - 私有方法
@@ -120,7 +153,6 @@
 }
 
 + (NSDictionary *)getHttpHeadDicta {
-    NSDictionary *dict = @{};
     
     return nil;
 
