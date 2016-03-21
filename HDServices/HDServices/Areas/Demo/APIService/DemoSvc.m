@@ -14,7 +14,7 @@
 
 @implementation DemoSvc
 
-+ (instancetype)getDateWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed {
++ (instancetype)getDataWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed {
     
     return [BaseSvc getUrl:@"api/nodes/show.json"].param(param).refresh(YES).completionBlock(^(APIResult *result){
         DemoModel *model = [DemoModel parse:result.data];

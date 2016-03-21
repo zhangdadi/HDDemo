@@ -23,7 +23,7 @@
     
     DemoParam *param = [[DemoParam alloc] init];
     param.ID = 2;
-    self.svc = [DemoSvc getDateWithParam:param cmpleted:^(APIResult *result, DemoModel *model) {
+    self.svc = [DemoSvc getDataWithParam:param cmpleted:^(APIResult *result, DemoModel *model) {
         if (result.isSucc) {
             NSLog(@"请求成功:%@", model);
         } else {

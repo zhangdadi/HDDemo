@@ -10,11 +10,6 @@
 #import "AFNetworking.h"
 #import "APIResult_Net.h"
 
-
-#define KGET  0
-#define KPOST 1
-
-
 //请求类型
 typedef NS_ENUM(int, HttpType) {
     HttpTypeGet = 0,

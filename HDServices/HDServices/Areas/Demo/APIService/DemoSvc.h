@@ -11,6 +11,6 @@
 
 @interface DemoSvc : BaseSvc
 
-+ (instancetype)getDateWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed;
++ (instancetype)getDataWithParam:(DemoParam *)param cmpleted:(void(^)(APIResult *result, DemoModel *model))completed;
 
 @end
