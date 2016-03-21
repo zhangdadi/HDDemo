@@ -60,28 +60,28 @@ typedef NS_ENUM(int, HttpType) {
     return helper;
 }
 
-- (DBHelper<DBHelperAttribute> *(^)(BaseJSONParam*))param {
+- (DBHelper<DBHelperProtocol> *(^)(BaseJSONParam*))param {
     return ^id(BaseJSONParam *param) {
         _param = param;
         return self;
     };
 }
 
-- (DBHelper<DBHelperAttribute> *(^)(NSString*))apiVersion {
+- (DBHelper<DBHelperProtocol> *(^)(NSString*))apiVersion {
     return ^id(NSString *apiVersion) {
         _apiVersion = apiVersion;
         return self;
     };
 }
 
-- (DBHelper<DBHelperAttribute> *(^)(BOOL))refresh {
+- (DBHelper<DBHelperProtocol> *(^)(BOOL))refresh {
     return ^id(BOOL refresh) {
         _refresh = refresh;
         return self;
     };
 }
 
-- (DBHelper<DBHelperAttribute> *(^)(DBHelperCompletionBlock))completionBlock {
+- (DBHelper<DBHelperProtocol> *(^)(DBHelperCompletionBlock))completionBlock {
     return ^id(DBHelperCompletionBlock completionBlock) {
         _completionBlock = [completionBlock copy];
         return self;

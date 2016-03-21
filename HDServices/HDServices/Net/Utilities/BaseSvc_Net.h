@@ -6,17 +6,17 @@
 //  Copyright (c) 2015年 HD. All rights reserved.
 //
 
-#import "BaseSvc.h"
-#import "DBHelper.h"
-
-
 #ifndef HDServices_BaseSvc_Net_h
 #define HDServices_BaseSvc_Net_h
 
+#import "BaseSvc.h"
+#import "DBHelper.h"
 
-@interface BaseSvc ()
+@interface BaseSvc ()<DBHelperProtocol>
 
 @property (nonatomic, strong) DBHelper *help;
+
+
 
 @end
 

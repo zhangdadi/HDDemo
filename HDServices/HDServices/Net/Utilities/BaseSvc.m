@@ -41,4 +41,55 @@
     }
 }
 
+
+#pragma mark - 重写协议
+
++ (instancetype)getUrl:(NSString *)url {
+    BaseSvc *svc = [[BaseSvc alloc] init];
+    svc.help = [DBHelper getUrl:url];
+    return svc;
+}
+
++ (instancetype)postUrl:(NSString *)url {
+    BaseSvc *svc = [[BaseSvc alloc] init];
+    svc.help = [DBHelper postUrl:url];
+    return svc;
+}
+
+- (DBHelper<DBHelperProtocol> *(^)(BaseJSONParam*))param {
+    return ^id(BaseJSONParam *param) {
+        _help.param(param);
+        return self;
+    };
+}
+
+- (DBHelper<DBHelperProtocol> *(^)(NSString*))apiVersion {
+    return ^id(NSString *apiVersion) {
+        _help.apiVersion(apiVersion);
+        return self;
+    };
+}
+
+- (DBHelper<DBHelperProtocol> *(^)(BOOL))refresh {
+    return ^id(BOOL refresh) {
+        _help.refresh(refresh);
+        return self;
+    };
+}
+
+- (DBHelper<DBHelperProtocol> *(^)(DBHelperCompletionBlock))completionBlock {
+    return ^id(DBHelperCompletionBlock completionBlock) {
+        _help.completionBlock(completionBlock);
+        return self;
+    };
+}
+
+- (id (^)())start {
+    return ^id() {
+        _help.start();
+        return self;
+    };
+}
+
+
 @end

@@ -15,27 +15,30 @@
 typedef void (^DBHelperCompletionBlock)(APIResult *result);
 
 
-@protocol DBHelperAttribute <NSObject>
+@protocol DBHelperProtocol  <NSObject>
+
++ (instancetype)getUrl:(NSString *)url;
++ (instancetype)postUrl:(NSString *)url;
 
 /**
  *  参数
  */
-@property (nonatomic, copy, readonly) DBHelper<DBHelperAttribute> *(^param)(BaseJSONParam *param);
+@property (nonatomic, copy, readonly) DBHelper<DBHelperProtocol> *(^param)(BaseJSONParam *param);
 
 /**
  *  api版本
  */
-@property (nonatomic, copy, readonly) DBHelper<DBHelperAttribute> *(^apiVersion)(NSString *apiVersion);
+@property (nonatomic, copy, readonly) DBHelper<DBHelperProtocol> *(^apiVersion)(NSString *apiVersion);
 
 /**
  *  是否缓存
  */
-@property (nonatomic, copy, readonly) DBHelper<DBHelperAttribute> *(^refresh)(BOOL refresh);
+@property (nonatomic, copy, readonly) DBHelper<DBHelperProtocol> *(^refresh)(BOOL refresh);
 
 /**
  *  回调
  */
-@property (nonatomic, copy, readonly) DBHelper<DBHelperAttribute> *(^completionBlock)(DBHelperCompletionBlock completed);
+@property (nonatomic, copy, readonly) DBHelper<DBHelperProtocol> *(^completionBlock)(DBHelperCompletionBlock completed);
 
 /**
  *  开始
@@ -45,7 +48,7 @@ typedef void (^DBHelperCompletionBlock)(APIResult *result);
 @end
 
 
-@interface DBHelper : NSObject<DBHelperAttribute>
+@interface DBHelper : NSObject<DBHelperProtocol>
 
 #pragma mark - 子类自定义时重写
 
@@ -56,7 +59,5 @@ typedef void (^DBHelperCompletionBlock)(APIResult *result);
 
 #pragma mark ---
 
-+ (instancetype)getUrl:(NSString *)url;
-+ (instancetype)postUrl:(NSString *)url;
 
 @end
