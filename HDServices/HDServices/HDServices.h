@@ -16,6 +16,8 @@ FOUNDATION_EXPORT const unsigned char HDServicesVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <HDServices/PublicHeader.h>
 
+#import <HDCore/HDCore.h>
+
 #import <HDServices/APIResult.h>
 
 #import <HDServices/DemoParam.h>

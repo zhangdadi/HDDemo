@@ -7,9 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <HDCore/HDCore.h>
 #import <HDServices/HDServices.h>
-#import <HDCore/HDCore.h>
 
 @interface ViewController ()
 @property (nonatomic, strong) DemoSvc *svc;
