@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		096981E71B411AA20027B42A /* HDCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096981E61B411AA20027B42A /* HDCore.framework */; };
 		096981E81B411AA20027B42A /* HDCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 096981E61B411AA20027B42A /* HDCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0988B0751B46719A0045024E /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0988B0741B46719A0045024E /* APIManager.m */; };
 		09A8DA5E1B28174B004F141B /* HDServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A8DA5D1B28174B004F141B /* HDServices.framework */; };
 		09A8DA5F1B28174B004F141B /* HDServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09A8DA5D1B28174B004F141B /* HDServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09EA86C41ABBE6ED0018B178 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EA86C31ABBE6ED0018B178 /* main.m */; };
@@ -48,8 +47,6 @@
 
 /* Begin PBXFileReference section */
 		096981E61B411AA20027B42A /* HDCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HDCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0988B0731B46719A0045024E /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
-		0988B0741B46719A0045024E /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		09A8DA5D1B28174B004F141B /* HDServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HDServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EA86BE1ABBE6ED0018B178 /* HDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09EA86C21ABBE6ED0018B178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,8 +110,6 @@
 				09EA86C61ABBE6ED0018B178 /* AppDelegate.m */,
 				09EA86C81ABBE6ED0018B178 /* ViewController.h */,
 				09EA86C91ABBE6ED0018B178 /* ViewController.m */,
-				0988B0731B46719A0045024E /* APIManager.h */,
-				0988B0741B46719A0045024E /* APIManager.m */,
 				09EA86CB1ABBE6ED0018B178 /* Main.storyboard */,
 				09EA86CE1ABBE6ED0018B178 /* Images.xcassets */,
 				09EA86D01ABBE6ED0018B178 /* LaunchScreen.xib */,
@@ -250,7 +245,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0988B0751B46719A0045024E /* APIManager.m in Sources */,
 				09EA86CA1ABBE6ED0018B178 /* ViewController.m in Sources */,
 				09EA86C71ABBE6ED0018B178 /* AppDelegate.m in Sources */,
 				09EA86C41ABBE6ED0018B178 /* main.m in Sources */,
