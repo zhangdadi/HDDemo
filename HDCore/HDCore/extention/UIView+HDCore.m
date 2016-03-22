@@ -41,7 +41,7 @@
 }
 
 - (void)setVWidth:(CGFloat)width {
-    self.VSize = CGSizeMake(width, self.vHeight);
+    self.vSize = CGSizeMake(width, self.vHeight);
 }
 
 - (CGFloat)vHeight {
